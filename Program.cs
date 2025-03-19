@@ -1,10 +1,40 @@
-﻿using System;
+using System;
+
+
+class SimpleDataBase<T> {
+
+    private List<T> storedData;
+    private List<DateTime> inputDates;
+
+    public SimpleDataBase()
+    {
+        storedData = new List<T>();
+        inputDates = new List<DateTime>();
+    }
+
+    public void AddNewData(T data)
+    {
+        storedData.Add(data);
+        inputDates.Add(DateTime.Now);
+    }
+
+    public void PrintAllData()
+    {
+        for (int i = 0; i < storedData.Count; i++)
+        {
+            Console.WriteLine(storedData[i] + " was added on " + inputDates[i]);
+        }
+    }
+
+    
+
+}
 
 
 
 
-internal class Program
-{
+
+
 
     class Pemrosesandata
     {
@@ -33,12 +63,22 @@ internal class Program
         
         
     }
+internal class Program
+{
     static void Main()
     {
 
         Pemrosesandata pemrosesandata = new Pemrosesandata();
         Console.WriteLine("Nilai terbesar adalah : " + pemrosesandata.DapatkanNilaiTerbesar(10.5, 30.5, 22.5));
-
+        SimpleDataBase<int> intDB = new SimpleDataBase<int>();
+        intDB.AddNewData(12);
+        intDB.AddNewData(34);
+        intDB.AddNewData(56);
+        intDB.PrintAllData();
+        SimpleDataBase<string> stringDB = new SimpleDataBase<string>();
+        
+        stringDB.PrintAllData();
         
     }
 }
+
